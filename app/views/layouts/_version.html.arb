@@ -1,0 +1,21 @@
+if (vs = resource.versions).present?
+  table_for vs.reverse do    
+    column :id
+    column '操作者', :whodunnit do |v|
+      if v.whodunnit.to_s.start_with?('0')
+        AdminUser.with_deleted.find_by_id(v.whodunnit[1..-1].to_i).try(:name)
+      elsif v.whodunnit.to_s.start_with?('1')
+        User.with_deleted.find_by_id(v.whodunnit[1..-1].to_i).try(:nickname)
+      else
+        '系统'
+      end
+    end
+    column '修改', :changes, class: 'changeset' do |v|
+      raw v.changeset.map{|field, values| "#{field} FROM #{values[0]} TO #{values[1]}"}.join("<br />")
+    end
+    column '时间', :created_at
+    column '详情' do |v|
+      link_to '详情', admin_paper_trail_version_path(v.id)
+    end
+  end
+end

@@ -1,0 +1,22 @@
+---
+zh-CN:
+  activerecord:
+    models:
+        admin_user: 管理员
+    attributes:
+      admin_user:
+        email: 邮箱
+        role: 角色
+        avatar: 头像
+        name: 名称
+        phone_number: 手机号码
+        current_sign_in_at: 最近登陆
+        current_sign_in_ip: 最近登陆IP
+        last_sign_in_at: 上次登陆
+        last_sign_in_ip: 上次登陆IP
+        password: 密码
+        password_confirmation: 确认密码
+        sign_in_count: 登陆次数
+        created_at: 创建时间
+        updated_at: 更新时间
+        deleted_at: 删除时间

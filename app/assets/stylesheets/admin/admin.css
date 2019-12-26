@@ -1,0 +1,31 @@
+body.active_admin form .quill-editor .ql-editor{
+  min-height: 500px;
+  max-height: 800px;
+}
+
+#sidebar{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#active_admin_content .history-sidebar{
+  float: none !important;
+  width: 100% !important;
+  margin-left: 0px !important;
+}
+
+.changeset{
+  overflow: hidden;
+  min-height: 18px;
+  display: block;
+}
+
+.row-avatar img{
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.col-avatar img{
+  max-height: 60px;
+  max-width: 60px;
+}
