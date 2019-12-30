@@ -2,7 +2,7 @@
 zh-CN:
   activerecord:
     models:
-        admin_user: 管理员
+      admin_user: 管理员
     attributes:
       admin_user:
         email: 邮箱

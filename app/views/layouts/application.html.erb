@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
-    <title>Career</title>
+    <title><%= yield(:title).present? ? yield(:title) : "Career" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
   </head>
-
-  <body>
+  <body style="padding-top: 56px;">
+    <%= render partial: 'layouts/shares/header' %>
     <%= yield %>
+    <%= render partial: 'layouts/shares/footer' %>
   </body>
 </html>

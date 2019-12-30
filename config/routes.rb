@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
+
+  resources :articles, only: [:index, :show]
+  root :to => "articles#index"
 end

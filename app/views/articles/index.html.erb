@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+      <h1 class="my-4">今日主题
+        <small>归零者的梦想</small>
+      </h1>
+      <% @articles && @articles.each do |article| %>
+        <div class="card mb-4">
+          <img class="card-img-top" src="<%= article.cover.url %>" alt="cover" onerror="this.src='<%= article.article_cover %>'">
+          <div class="card-body">
+            <h2><%= article.title %></h2>
+            <p class="card-text"><%= article.summary %></p>
+            <a href="<%= article_path(article) %>" class="btn btn-primary">查看详情 &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            <a href="#"><%= article.author %></a>
+            发表于<%= article.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @articles %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card my-4">
+        <h5 class="card-header">搜索</h5>
+        <div class="card-body">
+          <%= form_tag root_path, method: :get do %>
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="输入关键字搜索">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="submit">搜索!</button>
+            </span>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card my-4">
+        <h5 class="card-header">标签</h5>
+        <div class="card-body">
+          <div class="row">
+            <% @labels && @labels.each do |label| %>
+              <a href="<%= root_path(q: label.name) %>" class='btn btn-light'><%= label.name %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

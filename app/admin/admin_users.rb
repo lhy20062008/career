@@ -25,6 +25,7 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.inputs do
       f.input :email
+      f.input :avatar, hint: image_tag(resource.avatar.url.to_s)
       f.input :password
       f.input :password_confirmation
     end

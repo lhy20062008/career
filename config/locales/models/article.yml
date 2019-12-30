@@ -1,0 +1,17 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      article: 文章
+    attributes:
+      article:
+        author: 作者
+        title: 标题
+        summary: 简介
+        body: 正文
+        cover: 封面
+        labels: 标签
+        attachments: 附件
+        created_at: 创建时间
+        updated_at: 更新时间
+        deleted_at: 删除时间

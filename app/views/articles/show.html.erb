@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1 class="mt-4"><%= @article.title %></h1>
+      <p class="lead">
+        <a href="#"><%= @article.author %></a>
+      </p>
+      <hr>
+      <p>
+        <%= @article.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+      </p>
+      <hr>
+      <p>
+        <% @article.labels.each do |label| %>
+          <a href="<%= root_path(q: label.name) %>" class='btn btn-light'><%= label.name %></a>
+        <% end %>
+      </p>
+      <hr>
+      <img class="img-fluid rounded" src="<%= @article.cover.url %>" alt="cover" onerror="this.src='<%= @article.article_cover %>'">
+      <hr>
+      <div>
+        <%= raw @article.body %>
+      </div>
+      <hr>
+      <% if @article.attachments.present? %>
+        <% @article.attachments.each do |attachment| %>
+          <p>
+            <%= link_to attachment.name, attachment.file.url, download: attachment.name %>
+          </p>
+        <% end %>
+        <hr>
+      <% end %>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <div class="card my-4">
+        <h5 class="card-header">搜索</h5>
+        <div class="card-body">
+          <%= form_tag root_path, method: :get do %>
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="输入关键字搜索">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="submit">搜索!</button>
+            </span>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card my-4">
+        <h5 class="card-header">标签</h5>
+        <div class="card-body">
+          <div class="row">
+            <% @labels && @labels.each do |label| %>
+              <a href="<%= root_path(q: label.name) %>" class='btn btn-light'><%= label.name %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

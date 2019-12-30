@@ -28,5 +28,6 @@
 .byebug_history
 database.yml
 secrets.yml
+public/uploads
 # Ignore master key for decrypting credentials and more.
 /config/master.key
